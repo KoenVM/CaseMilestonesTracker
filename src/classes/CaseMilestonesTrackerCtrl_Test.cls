@@ -4,9 +4,19 @@ private class CaseMilestonesTrackerCtrl_Test
 	@isTest
 	static void testCaseMilestonesTrackerLogic()
 	{
+		Boolean slaVersionsEnable = SlaProcess.getSobjectType().getDescribe().fields.getMap().keySet().contains('IsVersionDefault');
+
+		String slaQuery = 'SELECT Id FROM SlaProcess WHERE IsActive=true';
+
+		if(slaVersionsEnable){
+			slaQuery += ' AND IsVersionDefault=true';
+		}
+
+		slaQuery += ' LIMIT 1';
+
 		//	get the first random sla process (doesn't matter which one)
-		SlaProcess slaP = [SELECT Id FROM SlaProcess WHERE IsActive=true LIMIT 1];
-		
+		SlaProcess slaP = Database.query(slaQuery);
+
 		//	create an account
 		Account acc = new Account(Name='Test');
 		insert acc;
