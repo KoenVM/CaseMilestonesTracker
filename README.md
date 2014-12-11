@@ -31,3 +31,7 @@ time shown:
 * if still open but breached : with how much time breached
 * if closed without breach : in how much time it was closed
 * if closed but breached : with how much time breached
+
+Installation:
+* either through manually adding the files you need from github
+* unmanaged package : https://login.salesforce.com/packaging/installPackage.apexp?p0=04t24000000LUvu
